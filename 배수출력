@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>      //srand함수를 포함
+
+using namespace std;
+
+int main() {
+
+    int i = 0;
+    int num;     //배수
+    int k;   //특정배수 개수
+
+    srand((unsigned int)time(NULL));
+    int ran = (rand() % 100 + 1);   //1~100까지의 무작위 수를 지정 (이때 ran은 0부터 시작이므로 +1을 해준다.
+
+    cout << "랜덤한 수 : " << ran << endl;
+    cout << "특정배수 개수 : ";
+    cin >> k;
+
+    for (int p = 1; p <= k; p++) {      //큰 for문과 작은 for문의 변수는 각각 설정한다. 그래야 큰 for이 아래 i와 헷갈리지 않고 작동된다.
+
+        cout << "\n\n" << p << "번째 특정 배수 : ";
+        cin >> num;
+
+        cout << "<특정배수만 출력하는 프로그램>\n";
+        for (i = 1; i <= ran; i++) {        //배수를 ran의 수까지 구별하고 출력한다.
+            if (i % num == 0) {
+                cout << i << ", ";
+            }
+        }
+
+        cout << "\n<특정배수 제외 출력하는 프로그램>\n";
+        for (i = 1; i <= ran; i++) {
+            if (i % num == 0) {
+                continue;       //배수들을 continue를 이용해 제외시키고 출력한다.
+            }
+            cout << i << ", ";
+        }
+
+    }
+}
