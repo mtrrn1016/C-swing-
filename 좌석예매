@@ -1,0 +1,51 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+    int x;  //예약여부
+    int seats[3][10] = { 0 };    //10행 3열의 좌석의 모든 값을 0으로 초기화
+    int seatchoiceA = 0;
+    int seatchoiceB = 0;
+
+    cout << "좌석을 예약하시겠습니까?(0이나 1선택) ";
+    cin >> x;
+    cout << endl;
+
+    while (x == 1) {        //예약
+
+        cout << "--------------------------------\n";
+        for (int i = 0; i <= 9; i++){       //for문에서 배열은 index는 0부터 시작하므로 i, k를 각각 0~9, 0~2로 설정한다.
+            cout << i << " ";
+        }
+        cout << "\n--------------------------------\n"; 
+
+        for (int k = 0; k <= 2; k++) {        //k=열의 수
+        
+            for (int i = 0; i <= 9; i++){       //i=행의 수
+               
+                cout << seats[k][i] << " ";     //좌석배치도 출력
+            }
+
+            cout << endl;
+        }
+
+        cout << "\n몇 열, 몇 번째 좌석을 예약하시겠습니까?";
+        cin >> seatchoiceA >> seatchoiceB;  //좌석선택
+
+        if (seats[seatchoiceA-1][seatchoiceB-1] == 0) {     //seatchoiceA, B도 마찬가지로 배열 index는 0부터 시작이므로 -1을 해준다.
+            cout << "예약되었습니다.\n";
+            seats[seatchoiceA-1][seatchoiceB-1] = 1;    //선택한 좌석의 값을 1로 바꿈으로써 예약 여부를 가린다.
+        }
+        else {
+            cout << "이미 예약된 자리입니다.\n";
+        }
+        cout << "\n좌석을 예약하시겠습니까?(0이나 1선택)";
+        cin >> x;
+        cout << endl;
+    }
+    if (x == 0) {       //예약취소
+        cout << "좌석 예약 종료\n";
+    }
+}
